@@ -19,12 +19,12 @@ contains
   m = 0.    ! masses of all particles to zero
 
   write(6,1000)
-  1000 format(' Enter number of galaxies (max 3)')
+  1000 format(' Enter number of galaxies (max 4)')
   read(5,*) ngal
 
-  do while (ngal > 3)
+  do while (ngal > 4)
     write(6,1001)
-    1001 format(' Too many galaxies! Enter number of galaxies (max 3)')
+    1001 format(' Too many galaxies! Enter number of galaxies (max 4)')
     read(5,*) ngal
   enddo
 
@@ -103,8 +103,8 @@ contains
 
   do j=1,nrings
     ri = j*dr
-    nphi = ninner + (ninner/2)*(j-1) ! see toomre
-    vphi = sqrt(m0/ri) ! keplerian rotation
+    nphi = ninner + (ninner/2)*(j-1)    ! number of particles per ring
+    vphi = sqrt(m0/ri)    ! keplerian rotation
     dphi = 2.*pi/nphi
     print*,'r = ',ri,' nphi = ',nphi,' dphi = ',dphi
     
