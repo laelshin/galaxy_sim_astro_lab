@@ -40,8 +40,14 @@ def update_graph(num):
     data=df[df['time']==num]
     graph.set_data (data.x, data.y)
     graph.set_3d_properties(data.z)
-    physt = round(1.5*dtout*num/1e3, 2)    # physical time. t=1 corresponds to 1.5 Myr
-    title.set_text('time={} Gyr'.format(physt))
+    physt = 1.5 * dtout * num # physical time. t=1 corresponds to 1.5 Myr
+    if physt < 100:
+        physt = round(1.5 * dtout * num, 1)
+        tscale = 'time={} Myr'
+    else:
+        physt = round(1.5 * dtout * num / 1e3, 2)
+        tscale = 'time={} Gyr'
+    title.set_text(tscale.format(physt))
     return title, graph,
 
 fig = plt.figure()
