@@ -27,7 +27,7 @@ for i in range(1,nsnaps+1):
     newsnap = [line.rstrip('\n').split() for line in open(datadir+'snap_'+'0'*(5-len(str(i)))+str(i))]
     time.append([float(newsnap[0][0])]*(len(newsnap)-1))
     newsnap = np.array(newsnap[1:])
-    newsnap = newsnap.astype(np.float)
+    newsnap = newsnap.astype(float)
     newxyz = newsnap[:,0:3]
     xyzdata = np.concatenate((xyzdata,newxyz))
 
